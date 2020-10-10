@@ -3,7 +3,7 @@ package com.challenge.common;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
-public abstract class CommonService <E> {
+public class CommonService <E> implements CommonIService<E> {
 
 	private String _url = "https://jsonplaceholder.typicode.com/";
 
@@ -24,5 +24,4 @@ public abstract class CommonService <E> {
 	public String get_url() {
 		return _url;
 	}
-	
 }

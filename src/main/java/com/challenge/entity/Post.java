@@ -6,13 +6,13 @@ public class Post extends CommonEntity{
 	private String title;
 	private String body;
 	
-	private User userId;
+	private long userId;
 
 	public Post() {
 		super();
 	}
 
-	public Post(String title, String body, User userId) {
+	public Post(String title, String body, long userId) {
 		super();
 		this.title = title;
 		this.body = body;
@@ -35,11 +35,11 @@ public class Post extends CommonEntity{
 		this.body = body;
 	}
 
-	public User getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 }

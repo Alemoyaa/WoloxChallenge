@@ -8,13 +8,13 @@ public class Comment extends CommonEntity{
 	private String email;
 	private String body;
 	
-	private Post postId;
+	private long postId;
 
 	public Comment() {
 		super();
 	}
 
-	public Comment(String name, String email, String body, Post postId) {
+	public Comment(String name, String email, String body, long postId) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -46,11 +46,11 @@ public class Comment extends CommonEntity{
 		this.body = body;
 	}
 
-	public Post getPostId() {
+	public long getPostId() {
 		return postId;
 	}
 
-	public void setPostId(Post postId) {
+	public void setPostId(long postId) {
 		this.postId = postId;
 	}
 	

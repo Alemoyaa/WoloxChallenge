@@ -6,14 +6,14 @@ public class Album extends CommonEntity{
 	
 	private String title;
 	
-	private User userId;
+	private long userId;
 
 	public Album() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Album(String title, User userId) {
+	public Album(String title, long userId) {
 		super();
 		this.title = title;
 		this.userId = userId;
@@ -27,11 +27,11 @@ public class Album extends CommonEntity{
 		this.title = title;
 	}
 
-	public User getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 }

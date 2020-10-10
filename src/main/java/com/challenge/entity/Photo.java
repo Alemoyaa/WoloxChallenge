@@ -8,13 +8,13 @@ public class Photo extends CommonEntity{
 	private String url;
 	private String thumbnailUrl;
 	
-	private Album albumId;
+	private long albumId;
 
 	public Photo() {
 		super();
 	}
 
-	public Photo(String title, String url, String thumbnailUrl, Album albumId) {
+	public Photo(String title, String url, String thumbnailUrl, long albumId) {
 		super();
 		this.title = title;
 		this.url = url;
@@ -46,11 +46,11 @@ public class Photo extends CommonEntity{
 		this.thumbnailUrl = thumbnailUrl;
 	}
 
-	public Album getAlbumId() {
+	public long getAlbumId() {
 		return albumId;
 	}
 
-	public void setAlbumId(Album albumId) {
+	public void setAlbumId(long albumId) {
 		this.albumId = albumId;
 	}
 }

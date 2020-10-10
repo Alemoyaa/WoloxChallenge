@@ -6,13 +6,13 @@ public class Todo extends CommonEntity{
 	private String title;
 	private boolean completed;
 	
-	private User userId;
+	private long userId;
 
 	public Todo() {
 		super();
 	}
 	
-	public Todo(String title, boolean completed, User userId) {
+	public Todo(String title, boolean completed, long userId) {
 		super();
 		this.title = title;
 		this.completed = completed;
@@ -35,11 +35,11 @@ public class Todo extends CommonEntity{
 		this.completed = completed;
 	}
 
-	public User getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 }

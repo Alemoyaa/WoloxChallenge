@@ -21,4 +21,8 @@ public class AlbumService extends CommonService<Album>{
 		return getOne(id, Album.class, get_url() + "albums/{id}");
 	}
 	
+	public Album[] getAllAlbumsForUser(long _userId){
+		String url = get_url() + "albums?userId="+_userId+"";
+		return getAll(Album[].class, url);
+	}
 }

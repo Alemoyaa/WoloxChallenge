@@ -1,9 +1,14 @@
 package com.challenge.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 import com.challenge.common.CommonService;
+import com.challenge.entity.Album;
 import com.challenge.entity.Photo;
 
 @Service
@@ -19,5 +24,28 @@ public class PhotoService extends CommonService<Photo>{
 	
 	public Photo getPhoto(long id){
 		return getOne(id, Photo.class, get_url() + "photos/{id}");
+	}
+	
+	public List<Photo> getAllPhotoForUser(long _userId){
+		
+		String url = get_url() + "albums?userId="+_userId+"";
+		
+		Album[] albumsUser = this.restTemplate.getForObject(url, Album[].class);
+		
+		Photo[] photos;
+		
+		List<Photo> photosUser = new ArrayList<Photo>();
+		
+		for (Album album : albumsUser) {
+			
+			url = get_url() + "albums/"+album.getId()+"/photos";
+			
+			photos = getAll(Photo[].class, url);
+			
+			photosUser.addAll(Arrays.asList(photos));
+			
+		}
+		
+		return photosUser;
 	}
 }

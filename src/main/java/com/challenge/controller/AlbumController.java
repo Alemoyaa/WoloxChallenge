@@ -45,4 +45,15 @@ public class AlbumController {
 					.body("{\"Error in getOne \": \"" + e.getMessage() + "\"}");
 		}
 	}
+	
+	@GetMapping("/user/{userId}")
+	@Transactional
+	public ResponseEntity<?> getAllAlbumsForUser(@PathVariable long userId) {
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(service.getAllAlbumsForUser(userId));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"Error in getAllAlbumsForUser \": \"" + e.getMessage() + "\"}");
+		}
+	}
 }

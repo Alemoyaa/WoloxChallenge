@@ -1,4 +1,4 @@
-package com.challenge.entity;
+package com.challenge.dtos;
 
 import com.challenge.common.CommonEntity;
 

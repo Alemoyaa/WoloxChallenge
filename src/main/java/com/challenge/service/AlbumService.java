@@ -4,7 +4,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 import com.challenge.common.CommonService;
-import com.challenge.entity.Album;
+import com.challenge.dtos.Album;
 
 @Service
 public class AlbumService extends CommonService<Album>{

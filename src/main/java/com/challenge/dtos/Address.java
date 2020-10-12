@@ -1,4 +1,4 @@
-package com.challenge.entity;
+package com.challenge.dtos;
 
 public class Address {
 	private String street;

@@ -1,21 +1,21 @@
-package com.challenge.entity;
+package com.challenge.dtos;
 
 import com.challenge.common.CommonEntity;
 
-public class Post extends CommonEntity{
+public class Todo extends CommonEntity{
 	private String title;
-	private String body;
+	private boolean completed;
 	
 	private long userId;
 
-	public Post() {
+	public Todo() {
 		super();
 	}
-
-	public Post(String title, String body, long userId) {
+	
+	public Todo(String title, boolean completed, long userId) {
 		super();
 		this.title = title;
-		this.body = body;
+		this.completed = completed;
 		this.userId = userId;
 	}
 
@@ -27,12 +27,12 @@ public class Post extends CommonEntity{
 		this.title = title;
 	}
 
-	public String getBody() {
-		return body;
+	public boolean isCompleted() {
+		return completed;
 	}
 
-	public void setBody(String body) {
-		this.body = body;
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 
 	public long getUserId() {

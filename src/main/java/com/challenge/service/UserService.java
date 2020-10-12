@@ -4,7 +4,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 import com.challenge.common.CommonService;
-import com.challenge.entity.User;
+import com.challenge.dtos.User;
 
 @Service
 public class UserService extends CommonService<User>{

@@ -8,8 +8,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 import com.challenge.common.CommonService;
-import com.challenge.entity.Album;
-import com.challenge.entity.Photo;
+import com.challenge.dtos.Album;
+import com.challenge.dtos.Photo;
 
 @Service
 public class PhotoService extends CommonService<Photo>{

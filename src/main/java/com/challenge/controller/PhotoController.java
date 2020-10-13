@@ -2,7 +2,6 @@ package com.challenge.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +24,6 @@ public class PhotoController {
 	}
 
 	@GetMapping("/")
-	@Transactional
 	public ResponseEntity<?> getAll() {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllPhoto());
@@ -36,7 +34,6 @@ public class PhotoController {
 	}
 	
 	@GetMapping("/{id}")
-	@Transactional
 	public ResponseEntity<?> getOne(@PathVariable long id) {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getPhoto(id));
@@ -47,7 +44,6 @@ public class PhotoController {
 	}
 	
 	@GetMapping("/user/{userId}")
-	@Transactional
 	public ResponseEntity<?> getAllPhotoForUser(@PathVariable long userId) {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllPhotoForUser(userId));

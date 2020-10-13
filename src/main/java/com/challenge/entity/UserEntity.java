@@ -1,8 +1,8 @@
 package com.challenge.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "user")
@@ -23,8 +25,9 @@ public class UserEntity implements Serializable{
 	@Column(name = "id")
 	private long id;
 	
-	@OneToMany(/*cascade = CascadeType.ALL, orphanRemoval = true*/mappedBy = "user")
-	private Set<PermitsEntity> permisos = new HashSet<PermitsEntity>();
+	@JsonManagedReference
+	@OneToMany(mappedBy = "user")
+	private List<PermitsEntity> permisos = new ArrayList<PermitsEntity>();
 
 	public long getId() {
 		return id;
@@ -34,13 +37,12 @@ public class UserEntity implements Serializable{
 		this.id = id;
 	}
 
-	public Set<PermitsEntity> getPermisos() {
+	public List<PermitsEntity> getPermisos() {
 		return permisos;
 	}
 
-	public void setPermisos(Set<PermitsEntity> permisos) {
+	public void setPermisos(List<PermitsEntity> permisos) {
 		this.permisos = permisos;
 	}
-	
-	
+
 }

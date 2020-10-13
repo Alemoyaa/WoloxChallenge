@@ -39,18 +39,6 @@ public class AlbumManagerService {
 		}
 	}
 	
-	public AlbumEntity update(long id, AlbumEntity entity) throws Exception {
-		try {
-			if (repository.existsById(id) == false) {
-				throw new Exception("No value present");
-			}
-			entity = repository.save(entity);			
-			return entity;
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	}
-	
 	public Iterable<AlbumEntity> findAll() throws Exception {
 		try {
 			return repository.findAll();
@@ -70,8 +58,6 @@ public class AlbumManagerService {
 		}
 
 		return !repository.existsById(id);
-
 	}
-	
 	
 }

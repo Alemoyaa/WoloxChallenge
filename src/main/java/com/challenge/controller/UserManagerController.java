@@ -40,7 +40,7 @@ public class UserManagerController {
 					.body("{\"message\": \"Error. Please check the ID, and try again later.\"}");
 		}
 	}
-
+	
 	@GetMapping("/read/{idAlbum}")
 	public ResponseEntity<?> getAllUserByPermitsRead(@PathVariable long idAlbum) {
 		try {

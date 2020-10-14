@@ -19,70 +19,64 @@ import com.challenge.entity.UserEntity;
 import com.challenge.service.UserManagerService;
 
 @RestController
-@CrossOrigin(origins = "*", 
-methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE,
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE,
 		RequestMethod.PUT })
 @RequestMapping(path = "api/manager/users")
 @Transactional
 public class UserManagerController {
 
 	private UserManagerService service;
-	
+
 	public UserManagerController(UserManagerService service) {
 		this.service = service;
 	}
 
-	@GetMapping("/read/{idAlbum}")
-    public ResponseEntity getAllUserByPermitsRead(@PathVariable long idAlbum) {
-        try {
-            return ResponseEntity.ok().body(service.findAllUserByPermits(idAlbum, true));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
-        }
-    }
-	
-	@GetMapping("/write/{idAlbum}")
-    public ResponseEntity getAllUserByPermitsWrite(@PathVariable long idAlbum) {
-        try {
-            return ResponseEntity.ok().body(service.findAllUserByPermits(idAlbum, false));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
-        }
-    }
-	
-	@GetMapping("/")
-    public ResponseEntity getAll() {
-        try {
-            return ResponseEntity.ok().body(service.findAll());
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
-        }
-    }
-   
-   @GetMapping("/{id}")
-    public ResponseEntity getOne(@PathVariable long id) {
-        try {
-            return ResponseEntity.ok().body(service.findById(id));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"message\": \"Error. Please check the ID, and try again later.\"}");
-        }
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getOne(@PathVariable long id) {
+		try {
+			return ResponseEntity.ok().body(service.findById(id));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body("{\"message\": \"Error. Please check the ID, and try again later.\"}");
+		}
+	}
 
-    @PostMapping("/")
-    public ResponseEntity post(@RequestBody UserEntity dto) {
-    	try {
-    		return ResponseEntity.ok().body(service.save(dto));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("{\"message\": \"Error. Please check the BODY request, and try again later.\"}");
-        }
-    }
-    
-    @PutMapping("/{id}/albums/")
-    public ResponseEntity putPermitsUser(@PathVariable long id, @RequestBody PermitsEntity dto) {
-        try {
-            return ResponseEntity.ok().body(service.updatePermitsUser(id, dto));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{\"message\": \"Error. Please check the ID or BODY request, and try again later.\"}");
-        }
-    }
+	@GetMapping("/read/{idAlbum}")
+	public ResponseEntity<?> getAllUserByPermitsRead(@PathVariable long idAlbum) {
+		try {
+			return ResponseEntity.ok().body(service.findAllUserByPermits(idAlbum, true));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
+		}
+	}
+
+	@GetMapping("/write/{idAlbum}")
+	public ResponseEntity<?> getAllUserByPermitsWrite(@PathVariable long idAlbum) {
+		try {
+			return ResponseEntity.ok().body(service.findAllUserByPermits(idAlbum, false));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
+		}
+	}
+
+	@PostMapping("/")
+	public ResponseEntity<?> post(@RequestBody UserEntity dto) {
+		try {
+			return ResponseEntity.ok().body(service.save(dto));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN)
+					.body("{\"message\": \"Error. Please check the BODY request, and try again later.\"}");
+		}
+	}
+
+	@PutMapping("/{id}/albums/")
+	public ResponseEntity<?> putPermitsUser(@PathVariable long id, @RequestBody PermitsEntity dto) {
+		try {
+			return ResponseEntity.ok().body(service.updatePermitsUser(id, dto));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body("{\"message\": \"Error. Please check the ID or BODY request, and try again later.\"}");
+		}
+	}
+
 }

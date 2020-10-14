@@ -46,18 +46,4 @@ public class AlbumManagerService {
 			throw new Exception(e.getMessage());
 		}
 	}
-	
-	public boolean delete(long id) throws Exception {
-		try {
-			if (repository.existsById(id)) {
-				repository.deleteById(id);
-			}
-
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-
-		return !repository.existsById(id);
-	}
-	
 }

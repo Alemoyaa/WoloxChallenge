@@ -18,15 +18,15 @@ public class PhotoService extends CommonService<Photo>{
 		super(restTemplateBuilder);
 	}
 
-	public Photo[] getAllPhoto(){
+	public Photo[] getAllPhoto() throws Exception{
 		return getAll(Photo[].class, get_url() + "photos");
 	}
 	
-	public Photo getPhoto(long id){
+	public Photo getPhoto(long id) throws Exception{
 		return getOne(id, Photo.class, get_url() + "photos/{id}");
 	}
 	
-	public List<Photo> getAllPhotoForUser(long _userId){
+	public List<Photo> getAllPhotoForUser(long _userId) throws Exception{
 		
 		String url = get_url() + "albums?userId="+_userId+"";
 		

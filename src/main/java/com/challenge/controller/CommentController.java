@@ -29,7 +29,7 @@ public class CommentController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllComments());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getAll \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class CommentController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getComment(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getOne \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class CommentController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.findCommentsForName(name));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getPostForName \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the Name, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class CommentController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.findCommentsForUser(idUser));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getPostForName \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	

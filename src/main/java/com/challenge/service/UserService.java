@@ -13,11 +13,11 @@ public class UserService extends CommonService<User>{
 		super(restTemplateBuilder);
 	}
 
-	public User[] getAllUsers(){
+	public User[] getAllUsers() throws Exception{
 		return getAll(User[].class, get_url() + "users");
 	}
 	
-	public User getUser(long id){
+	public User getUser(long id) throws Exception{
 		return getOne(id, User.class, get_url() + "users/{id}");
 	}
 	

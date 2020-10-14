@@ -36,8 +36,8 @@ public class UserManagerController {
 		try {
 			return ResponseEntity.ok().body(service.findById(id));
 		} catch (Exception e) {
-			return ResponseEntity.badRequest()
-					.body("{\"message\": \"Error. Please check the ID, and try again later.\"}");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -46,7 +46,8 @@ public class UserManagerController {
 		try {
 			return ResponseEntity.ok().body(service.findAllUserByPermits(idAlbum, true));
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 
@@ -55,7 +56,8 @@ public class UserManagerController {
 		try {
 			return ResponseEntity.ok().body(service.findAllUserByPermits(idAlbum, false));
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().body("{\"message\": \"Error. Please try again later.\"}");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 

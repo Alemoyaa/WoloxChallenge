@@ -18,19 +18,19 @@ public class CommentService extends CommonService<Comment> {
 		super(restTemplateBuilder);
 	}
 
-	public Comment[] getAllComments(){
+	public Comment[] getAllComments() throws Exception{
 		return getAll(Comment[].class, get_url() + "comments");
 	}
 	
-	public Comment getComment(long id){
+	public Comment getComment(long id) throws Exception{
 		return getOne(id, Comment.class, get_url() + "comments/{id}");
 	}
 	
-	public Comment[] findCommentsForName(String _name) {
+	public Comment[] findCommentsForName(String _name) throws Exception{
 		return getAll(Comment[].class, get_url() + "comments?name="+_name+"");
 	}
 	
-	public List<Comment> findCommentsForUser(long idUser) {
+	public List<Comment> findCommentsForUser(long idUser) throws Exception {
 		
 		String url = get_url() + "posts?userId="+idUser+"";
 		

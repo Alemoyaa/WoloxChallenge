@@ -13,12 +13,20 @@ public class CommonService <E> implements CommonIService<E> {
 		this.restTemplate = restTemplateBuilder.build();
 	}
 	
-	public E[] getAll(Class<E[]> classEx, String url){
-		return this.restTemplate.getForObject(url, classEx);
+	public E[] getAll(Class<E[]> classEx, String url) throws Exception{
+		try {
+			return this.restTemplate.getForObject(url, classEx);
+		}catch (Exception e) {
+			throw new Exception("Error. Please try again later. Error: "+ e.getMessage()) ;
+		}
 	}
 	
-	public E getOne(long id, Class<E> classEx, String url){
-		return this.restTemplate.getForObject(url, classEx, id);
+	public E getOne(long id, Class<E> classEx, String url) throws Exception{
+		try {
+			return this.restTemplate.getForObject(url, classEx, id);
+		}catch(Exception e) {
+			throw new Exception("Error. Please try again later. Error: "+ e.getMessage()) ;
+		}
 	}
 
 	public String get_url() {

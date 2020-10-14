@@ -29,7 +29,7 @@ public class PhotoController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllPhoto());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getAll \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class PhotoController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getPhoto(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getOne \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class PhotoController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllPhotoForUser(userId));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getAllPhotosForUser \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 }

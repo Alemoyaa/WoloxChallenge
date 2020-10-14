@@ -13,15 +13,15 @@ public class AlbumService extends CommonService<Album>{
 		super(restTemplateBuilder);
 	}
 	
-	public Album[] getAllAlbums(){
+	public Album[] getAllAlbums() throws Exception{
 		return getAll(Album[].class, get_url() + "albums");
 	}
 	
-	public Album getAlbum(long id){
+	public Album getAlbum(long id) throws Exception{
 		return getOne(id, Album.class, get_url() + "albums/{id}");
 	}
 	
-	public Album[] getAllAlbumsForUser(long _userId){
+	public Album[] getAllAlbumsForUser(long _userId) throws Exception{
 		String url = get_url() + "albums?userId="+_userId+"";
 		return getAll(Album[].class, url);
 	}

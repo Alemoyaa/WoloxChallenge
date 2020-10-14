@@ -28,7 +28,7 @@ public class AlbumController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllAlbums());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getAll \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class AlbumController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAlbum(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getOne \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class AlbumController {
 			return ResponseEntity.status(HttpStatus.OK).body(service.getAllAlbumsForUser(userId));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-					.body("{\"Error in getAllAlbumsForUser \": \"" + e.getMessage() + "\"}");
+					.body("{\"Error. Please check the ID, and try again later \": \"" + e.getMessage() + "\"}");
 		}
 	}
 }

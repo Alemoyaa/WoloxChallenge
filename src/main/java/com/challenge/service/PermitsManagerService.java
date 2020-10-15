@@ -20,6 +20,7 @@ public class PermitsManagerService {
 			if (repository.existsById(id) == false) {
 				throw new Exception("No value present");
 			}
+			entity.setId(id);
 			entity = repository.save(entity);
 			return entity;
 		} catch (Exception e) {

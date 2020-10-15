@@ -33,6 +33,14 @@ public class UserManagerService {
 
 	}
 
+	public Iterable<UserEntity> findAll() throws Exception {
+		try {
+			return repository.findAll();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 	public UserEntity save(UserEntity entity) throws Exception {
 		try {
 			entity = repository.save(entity);
@@ -44,20 +52,20 @@ public class UserManagerService {
 
 	public UserEntity updatePermitsUser(long id, PermitsEntity entity) throws Exception {
 		try {
-
+			entity.setId(id);
 			if (repository.existsById(id) == false) {
 				throw new Exception("No value present");
 			}
 
 			Optional<UserEntity> varOptional = repository.findById(id);
-
+			
 			for (PermitsEntity permit : varOptional.get().getPermisos()) {
 				if (permit.getId() == entity.getId()) {
 					permit.setRead(entity.isRead());
 					permit.setWrite(entity.isWrite());
 				}
 			}
-
+			
 			UserEntity entitySave = varOptional.get();
 
 			entitySave = repository.save(entitySave);

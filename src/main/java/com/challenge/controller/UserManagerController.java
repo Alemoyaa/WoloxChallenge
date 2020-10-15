@@ -30,6 +30,16 @@ public class UserManagerController {
 	public UserManagerController(UserManagerService service) {
 		this.service = service;
 	}
+	
+	@GetMapping("/")
+	public ResponseEntity<?> getAll() {
+		try {
+			return ResponseEntity.ok().body(service.findAll());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("{\"Error. Please try again later \": \"" + e.getMessage() + "\"}");
+		}
+	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getOne(@PathVariable long id) {
